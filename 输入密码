@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+#include <Windows.h>
+#include <stdlib.h>
+int main()
+{
+	int a = 0;
+	char password[20] = { 0 };
+	for (a = 0;a < 3;a++)
+	{
+		printf("请输入指令:");
+		scanf("%s", password);
+		if (strcmp("123456", password) == 0)
+		{
+			printf("登录成功\n");
+			break;
+		}
+		else
+		{
+			system("cls");
+			printf("输入错误\n");			
+		}
+	}
+	if (a == 3)
+		printf("密码已锁死");
+	return 0;
+}

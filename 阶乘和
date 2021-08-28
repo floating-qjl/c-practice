@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int a = 0;
+	int b = 1;
+	int c = 0;
+	int n = 0;
+	int ret = 1;
+	int sum1 = 0;
+	int sum2 = 0;
+	//第一种
+	for (n = 1;n <= 10;n++)
+	{
+		b = 1;
+		//若不重置b的值，则其会保留上一次计算得到的值
+		for (a = 1;a <= n;a++)
+			//for循环可以嵌套
+		{
+			b = b * a;
+		}
+		sum1= sum1 + b;
+	}
+		printf("sum1=%d\n", sum1);
+    //第二种
+		for (c = 1;c <=10;c++)
+		{
+			ret = ret * c;
+			// !2 * 3= !3
+			sum2 = sum2 + ret;
+		}
+		printf("sum2=%d\n", sum2);
+
+		return 0;
+}

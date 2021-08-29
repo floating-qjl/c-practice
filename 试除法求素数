@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+int main()
+{
+	int a = 0;
+	int count = 0;
+	for(a=100;a<=200;a++)
+	{
+		int b = 0;
+		//试除法
+		for (b = 2;b < a;b++)
+		{
+			if (a % b == 0)
+			{
+				break;
+			}
+		}
+		if (a == b)
+		{
+			count++;
+			printf("素数为%d\n", a);
+		}		
+	}
+	printf("共有%d个", count);
+	 return 0;
+}

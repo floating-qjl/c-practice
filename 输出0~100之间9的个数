@@ -1,0 +1,17 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+	int a = 0;
+	int count = 0;
+	for (a = 0;a < 100;a++)
+	{
+		if (a % 10 == 9)
+			count++;
+	    if (a / 10 == 9)
+			count++;
+	}
+	printf("共有%d个9", count);
+	return 0;
+}

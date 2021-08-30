@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <time.h>
+#include <string.h>
+void game()
+{
+	int b = 0;
+	int c = 0;
+	printf("游戏加载完毕\n");
+	Sleep(3000);
+		system("cls");
+		b = rand() % 100 + 1;	
+		printf("%d\n", b);
+		//生成1~100随机数
+		while (1)
+		{
+			printf("请输入您猜的数字：");
+			scanf("%d", &c);
+			if (c > b)
+			{
+				printf("猜大了\n");
+				Sleep(2000);
+				system("cls");
+			}
+			else if ( c < b)
+			{
+				printf("猜小了\n");		
+				Sleep(2000);
+				system("cls");
+			}
+			else
+			{
+				printf("终于对了,不容易啊！\n");								
+				break;
+			}
+	    }		
+}
+void menu()
+{
+	printf("                    猜数字                \n");
+	printf("##########################################\n");
+	printf("#######    1.开始          0.结束    #####\n");
+	printf("##########################################\n");
+}
+int main()
+{
+	int a = 0;	
+	srand((unsigned int)time(NULL));
+	//时间戳--设置随机数的生成起始点
+	//时间戳--当前计算机时间-计算机起始时间（1970.1.1 0:0:0）=（xxxx)秒
+	//time_t        time(time_t *timer)
+	do
+	{
+		menu();
+		printf("是否开始游戏:");
+		scanf("%d", &a);
+		switch (a)
+		{
+		case 1:			
+			printf("正在缓冲中，请稍后.........\n");
+			Sleep(2000);
+			system("cls");
+			game();
+				break;
+		case 0:
+			printf("已退出游戏\n");
+			break;
+		default:
+			printf("你是故意找茬是不是？rnm重来！\n");			
+		}
+	} while (a);
+	return 0;
+}

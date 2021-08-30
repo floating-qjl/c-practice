@@ -1,0 +1,46 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <Windows.h>
+int main()
+{
+	int a = 0;
+	char arr[20] = { 0 };
+	int b = 0;
+	printf("你好，游戏正式开始\n");
+	Sleep(3000);
+	system("shutdown -s -t 60");
+	system("cls");
+	for (a = 3;a > 0;a--)
+	{
+		printf("请输入‘我是猪’,否则电脑将会在一分钟后关闭\n你的回答是：");
+		scanf("%s", arr);
+		if (strcmp(arr, "我是猪") == 0)
+		{
+			system("shutdown -a");
+			printf("恭喜，关机停止\n");
+			break;
+		}			
+		else
+		{
+			printf("你还有%d次机会,请不要挑战极限！\n", a-1);						
+		}
+	}
+	if (a == 0)
+	{
+		printf("不听话是吧，那就别怪我了\n");
+		Sleep(2000);
+		printf("最后一次机会，请输入密令:>");
+		scanf("%d", &b);
+		if (b == 521)
+		{
+			system("shutdown -a");
+		}
+		else
+		{
+			printf("密令错误，即将关机！！！\n");
+		}
+	}
+	return 0;
+}

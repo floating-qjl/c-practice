@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <math.h>
+
+void judge(int x)
+{
+	if ((x % 4 == 0 && x % 100 != 0) || (x % 400 == 0))
+	{
+		printf("%d年为闰年\n", x);
+	}
+	else
+		printf("%d年不是闰年\n", x);
+}
+int is_leap_nian(int y)
+{
+	if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))
+	{
+		return 1;
+	}
+	else
+		return 0;
+}
+
+int main()
+{
+	int year = 0;
+	int nian = 0;
+	scanf("%d%d", &year,&nian);
+	judge(year);
+	if ((is_leap_nian(nian)) == 1)
+	{
+		printf("%d为闰年\n", nian);
+	}
+	return 0;
+}

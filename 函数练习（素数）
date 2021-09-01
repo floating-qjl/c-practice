@@ -1,0 +1,47 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <math.h>
+
+void judge(int x)
+//第一种方法
+{
+	int y = 0;
+	for (y = 2;y <= sqrt(x);y++)
+	{
+		if (x % y == 0)
+		{
+			printf("a不为素数\n");
+			break;
+		}	    
+	}
+	if (y > sqrt(x))
+	{
+		printf("a为素数\n");		
+	}
+}
+int is_prime(int m)
+//第二种方法
+{
+	int n = 0;
+	for (n = 2;n <= sqrt(m);n++)
+	{
+		if (m % n == 0)
+		{		
+			return 0;
+			//效力比break强，函数直接结束
+		}
+	}
+		return 1;	
+}
+int main()
+{
+	int a = 0;
+	int b = 0;
+	scanf("%d%d", &a, &b);
+	judge(a);
+	if (is_prime(b) == 1)
+	{
+		printf("b为素数");
+	}
+	return 0;
+}

@@ -1,0 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+void acg(int a)
+{
+	for (a = 0;a < 4;a++);
+	printf("%d\n", a);
+}
+void rpg(int a)
+{
+	acg(a);
+	printf("%d\n", a);
+}
+int main()
+{
+	int a = 0;
+	rpg(a);
+	printf("%d\n", a);
+	return 0;
+}

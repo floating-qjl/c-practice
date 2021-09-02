@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+//1 + stelenth("bcdefg");
+//1 + 1 + strlenth("cdefg");
+//.........
+//1 + 1 + 1 + 1 + 1 + 1 + strlenth("g");
+int strlenth(char* arr)
+{
+	if (*arr != '\0')
+	{
+		return 1 + strlenth(arr+1);
+		//不能用后自增，否则应先完成整个式子，再+1，会无限死循环，造成栈溢出
+	}
+	else
+		return 0;
+}
+int main()
+{
+	char arr[] = "abcdefg";
+	int len = strlenth(arr);
+	printf("len=%d\n", len);
+	return 0;
+}

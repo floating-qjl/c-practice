@@ -1,0 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+int fib(int n)
+{
+	if (n > 2)
+		return fib(n - 1) + fib(n - 2);
+	else
+		return 1;
+}
+int main()
+{
+	int a = 0;
+	//斐波那楔数列
+	//1 1 2 3 5 8 13 21 34 55.....前两数之和为后一个数
+	scanf("%d", &a);
+	//TDD  测试驱动开发
+	int ret = fib(a);
+	printf("ret=%d\n", ret);
+	return 0;
+}

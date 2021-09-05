@@ -1,0 +1,168 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <time.h>
+#define LL 9
+#define RR 9
+#define LLS LL+2
+#define RRS RR+2
+#define COUNT 10
+void board1(char arr[LLS][RRS], int lls, int rrs, char ret)
+{
+	int i = 0;
+	for (i = 0;i < lls;i++)
+	{
+		int j = 0;
+		for (j = 0;j < rrs;j++)
+		{
+			arr[i][j] = ret;
+		}
+	}
+}
+void board2(char arr[LLS][RRS], int ll, int rr)
+{
+	int a = 0;
+	int b = 0;
+	for (a = 0;a <= rr;a++)
+	{
+		printf("%d ", a);
+	}
+	printf("\n");
+	for (a = 1;a <= ll;a++)
+	{
+		printf("%d", a);
+		for (b = 1;b <= rr;b++)
+		{
+			printf(" %c", arr[a][b]);
+		}
+		printf("\n");
+	}
+}
+int get_count(char mine[LLS][RRS], int x, int y)
+{
+	return mine[x - 1][y] +
+		mine[x - 1][y - 1] +
+		mine[x][y - 1] +
+		mine[x + 1][y - 1] +
+		mine[x + 1][y] +
+		mine[x + 1][y + 1] +
+		mine[x][y + 1] +
+		mine[x - 1][y + 1] - 8 * '0';
+}
+void creatboard(char mine[LLS][RRS],char show[LLS][RRS],int ll,int rr)
+{
+	int x = 0;
+	int y = 0;
+	int win_count = 0;
+	while(win_count < ll * rr - COUNT)
+	{
+		printf("请输入坐标(中间加空格):>");
+		scanf("%d%d", &x, &y);
+		//判断是否合法
+		if (x >= 1 && x <= LL && y >= 1 && y <= RR)
+		{
+			if (mine[x][y] == '1')
+			{
+				printf("boom！！！\n你已死亡!\n");
+				board2(mine, ll, rr);
+				break;
+			}
+			else
+			{
+				int ret = get_count(mine, x, y);
+				system("cls");
+				show[x][y] = ret + '0';
+				board2(show, ll, rr);
+				win_count++;
+			}
+		}
+		else
+		{
+			printf("此坐标非法，请重新输入\n");
+		}
+	}
+	if (win_count == ll * rr - COUNT)
+	{
+		printf("YOU WIN\n");
+		board2(mine, ll, rr);
+	}
+}
+void setboard(char arr[LLS][RRS], int ll, int rr)
+{
+	int x = 0;
+	int y = 0;
+	int count = COUNT;
+	while (count)
+	{
+		x = rand() % ll + 1;
+		y = rand() % rr + 1;
+		if (arr[x][y] == '0')
+		{
+			arr[x][y] = '1';
+			count--;
+		}
+	}
+}
+
+
+void game()
+{
+	//扫雷
+	//创建
+	char mine[LLS][RRS] = { 0 };
+	char show[LLS][RRS] = { 0 };
+	//初始化
+	board1(mine, LLS, RRS, '0');
+	board1(show, LLS, RRS, '*');
+	//打印棋盘
+	//board2(mine, LL, RR);
+	board2(show, LL, RR);
+	//添放炸弹
+	setboard(mine, LL, RR);
+	//正式开始
+	creatboard(mine, show, LL, RR);
+}
+void menu()
+{
+	printf("***************************************\n");
+	printf("********        1.play         ********\n");
+	printf("********        0.exit         ********\n");
+	printf("***************************************\n");
+}
+void test()
+{
+	int input = 0;
+	srand((unsigned int)time(NULL));
+	do
+	{
+		menu();
+		printf("你的选择是:>");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			printf("加载中.......");
+			Sleep(1000);
+			printf("加载完毕\n");
+			system("cls");
+			game();		
+			break;
+		case 0:
+			printf("游戏已退出\n");
+			break;
+		default:
+			printf("输入错误，请重新输入\n");
+			break;
+		}
+		
+	} while (input);
+}
+int main()
+{
+	printf("准备好了吗？\n游戏正式开始");
+	Sleep(3000);
+	system("cls");
+	test();
+	return 0;
+}

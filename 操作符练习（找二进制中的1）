@@ -1,0 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+int main()
+{
+	int a = 0;
+	int b = 0;
+	int count = 0;
+	scanf("%d", &a);
+	//转化为二进制
+	//a & 1 ,假设a = 5
+	//101 & 001 = 001
+	for (b = 0;b < 32;b++)
+	{
+		if (((a>>b) & 1) == 1)
+			count++;
+	}
+	printf("%d", count);
+	return 0;
+}

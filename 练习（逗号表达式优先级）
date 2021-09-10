@@ -1,0 +1,13 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+int main()
+{
+	int a, b, c;
+	a = 5;
+	b = 6;
+	c = 7;
+	b = (c++, ++c, ++a, a++);//此时先逗号表达式，再赋值
+  //b = c++, ++c, ++a, a++  此时先赋值在进行逗号表达式
+	printf("%d\n%d\n%d\n", a, b, c);
+	return 0;
+}

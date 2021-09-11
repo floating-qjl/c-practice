@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <stdlib.h>
+int tent( int a)
+{
+	int count = 0;
+	while(a)
+	{
+		a = a & (a - 1);
+		//假设a=13
+		//1101    13
+		//1100    12
+		//1100    n=13 & 12
+		//1011    n-1
+		//1000    n= n & (n-1)
+		//即每运行一次就减少一个1
+		count++;
+	}
+	return count;
+}
+int main()
+{
+	int a = 0;
+	scanf("%d", &a);
+	int ret = tent(a);
+	printf("%d\n", ret);
+	system("pause");
+	return 0;
+}

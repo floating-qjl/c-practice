@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <stdlib.h>
+int strleng(char* arr)
+{
+	if (*arr != '\0')
+	{
+		return 1 + strleng(arr + 1);
+	}
+	else
+		return 0;
+}
+void test(char* arr)
+{
+	int left = 0;
+	int sz = strleng(arr);
+	int right = sz - 1;
+	int tmp = arr[left];
+	arr[left] = arr[right];
+	arr[right] = '\0';
+	if(strleng(arr+1)>1)
+	    test(arr + 1);
+	arr[right] = tmp;
+	
+}
+int main()
+{
+	char arr[] = "abcdefg";
+	strleng(arr);
+	test(arr);
+	printf("%s", arr);
+	return 0;
+}

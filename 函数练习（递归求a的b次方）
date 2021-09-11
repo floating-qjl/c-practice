@@ -1,0 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <stdlib.h>
+double test(int a,int b)
+{
+	if (b < 0)
+	{
+		return (1.0 / (test(a, -b)));
+	}
+	else if (b == 0)
+	{
+		return 1;
+	}
+	else
+		return a * test(a, b - 1);
+}
+int main()
+{
+	int a = 0;
+	int b = 0;
+	scanf("%d%d", &a,&b);
+	double count = test(a, b);
+	printf("%lf \n", count);
+	return 0;
+}

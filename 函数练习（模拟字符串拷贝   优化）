@@ -1,0 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <assert.h>
+char* my_strcpy(char arr1[], const char arr2[])
+    //const 使得*arr2不会改变，即不会发生误将arr1内容拷贝到arr2中
+{
+	//第一种优化
+	//if(arr1!=NULL && arr2!=NULL)
+	//第二种优化
+	char* tmp = arr1;
+	//若后面直接返回arr1，则返回结果地址即变成了arr2，没有意义
+	//所以要先保存arr1的起始地址
+	assert((arr1 && arr2) != NULL);//断言
+	while (*arr1++ = *arr2++)
+		//吧arr2指向的字符串拷贝到arr1指向的空间，包含'\0'字符
+	{
+		;
+	}
+	return tmp;
+}
+int main()
+{
+	char arr1[] = "###############";
+	char arr2[] = "我是傻逼";
+	printf("%s\n", my_strcpy(arr1, arr2));
+	return 0;
+}

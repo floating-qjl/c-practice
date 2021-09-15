@@ -1,0 +1,15 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
+unsigned char a = 0;
+int main()
+{
+
+	for (a = 0;a <= 255;a++)
+	{
+		printf("world\n");
+	}
+	return 0;
+}

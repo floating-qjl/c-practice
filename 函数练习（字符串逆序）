@@ -29,9 +29,10 @@ void swap(char a[])
 }
 int main()
 {
-	char a[] = "abcdefg";
+	char a[256] = {0};
+	gets(a);//读取一行
 	swap(a);
-	printf("%s\n", a);
+	printf("逆序后为：%s\n", a);
 
 	return 0;
 }

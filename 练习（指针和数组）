@@ -1,0 +1,16 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+int main()
+{
+
+	unsigned long pul[] = { 6,7,8,9,10 };
+	unsigned long* pulp;
+	pulp = pul;
+	//数组名赋值给了指针，相当于首元素地址
+	*(pulp + 3) += 3;
+	//指向了9的地址，进行*并+3后得到结果
+	printf("%d,%d\n", *pulp, *(pulp + 3));
+
+	printf("\n");
+	return 0;
+}

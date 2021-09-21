@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+int main()
+{
+	int n = 0;
+	for (n = 1;n < 100000;n++)
+	{
+		int b = n;
+		int sum = 0;
+		int count = 1;
+		while (b /= 10)
+		{			
+				count++;				
+		}
+		b = n;
+		while(b)
+		{			
+			sum += pow((b % 10) , count);
+			b = b / 10;
+		}	
+		if (sum == n)
+		{
+			printf("%d\n", n);
+		}
+	}
+	return 0;
+}

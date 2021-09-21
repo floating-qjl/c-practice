@@ -1,0 +1,37 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+void swap(char a[])
+{
+	assert(a);
+	int sz = strlen(a);
+	int left = 0;
+	int right = sz - 1;
+	while (left < right)
+	{
+		char b = a[left];
+		a[left] = a[right];
+		a[right] = b;
+		left++;
+		right--;
+	}
+	//char* left = a;
+	//char* right = a + sz - 1;
+	//while (left < right)
+	// { 
+	//   char b = *left;
+	//   *left = *right;
+	//   *right = b;
+	//   left++;
+	//   right--;
+	// }
+}
+int main()
+{
+	char a[] = "abcdefg";
+	swap(a);
+	printf("%s\n", a);
+
+	return 0;
+}

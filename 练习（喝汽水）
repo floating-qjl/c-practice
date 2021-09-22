@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	//喝汽水，一瓶汽水一元，两个空瓶可以换一个汽水，给20元，可以喝多少汽水
+	int money = 0;
+	int totle = 0;
+	int empty = 0;
+	scanf("%d", &money);
+	totle = money;
+	empty = money;
+	while (empty >= 2)
+	{
+		totle += empty / 2;
+		empty = empty / 2 + empty % 2;
+	}
+	printf("%d\n", totle);
+
+	return 0;
+}

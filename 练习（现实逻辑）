@@ -1,0 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	//已知：a：不是我
+	//      b：是c
+	//      c：是d
+	//      d：c在胡说
+	//同时3人说了真话，1人说了假话，判断凶手
+	int killer = 0;
+	for (killer = 'a'; killer < 'd'; killer++)
+	{
+		if ((killer != 'a') + (killer == 'c') + (killer == 'd') + (killer != 'd') == 3)
+		{
+			printf("凶手为：%c\n", killer);
+		}
+	}
+	return 0;
+}

@@ -1,0 +1,18 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	unsigned char a = 200;
+	//11001000
+	unsigned char b = 100;
+	//01100100
+	unsigned char c = 0;
+	c = a + b;
+	//00101100 - c
+	//100101100 a+b
+	//0000000000000000000000100101100  --  整形提升
+	printf("%d %d", a + b, c);
+	//%d 为有符号十进制数，正数的原反补码相同
+	return 0;
+}

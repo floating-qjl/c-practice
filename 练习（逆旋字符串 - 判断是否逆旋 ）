@@ -1,0 +1,53 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <assert.h>
+#include <string.h>
+void reserve(char* arr1, char* arr2)
+{
+	assert(arr1 != NULL);
+	assert(arr2 != NULL);
+	char* left = arr1;
+	char* right = arr2;
+	while (left < right)
+	{
+		char tmp = *left;
+		*left = *right;
+		*right = tmp;
+		left++;
+		right--;
+	}
+}
+void test(char* a, int n)
+{
+	assert(a != NULL);
+	int len = strlen(a);
+	assert(n <= len);
+	reserve(a, a + n-1);//逆序左边
+	reserve(a + n, a + len - 1);//逆序右边
+	reserve(a, a + len - 1);//逆序整体
+	
+}
+int is_move(char a[], char b[])
+{
+	int k = strlen(a);	
+	int d = 0;
+	for (d = 0;d < k - 1;d++)
+	{
+		test(a, 1);
+		int ret = strcmp(a, b);
+		if (ret == 0)
+			return 1;
+	}
+	return 0;
+}
+int main()
+{
+	char a[] = "abcdef";
+	char b[] = "defabc";
+	int ret = is_move(a, b);
+	if (ret == 1)
+		printf("yes\n");
+	else
+		printf("no\n");
+	return 0;
+}

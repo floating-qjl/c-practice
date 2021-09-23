@@ -1,0 +1,39 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <assert.h>
+#include <string.h>
+void reserve(char* arr1, char* arr2)
+{
+	assert(arr1 != NULL);
+	assert(arr2 != NULL);
+	char* left = arr1;
+	char* right = arr2;
+	while (left < right)
+	{
+		char tmp = *left;
+		*left = *right;
+		*right = tmp;
+		left++;
+		right--;
+	}
+}
+void test(char* a, int n)
+{
+	assert(a != NULL);
+	int len = strlen(a);
+	assert(n <= len);
+	reserve(a, a + n-1);//逆序左边
+	reserve(a + n, a + len - 1);//逆序右边
+	reserve(a, a + len - 1);//逆序整体
+	
+}
+int main()
+{
+	char a[] = "abcdef";
+	int n = 0;
+	scanf("%d", &n);
+	test(a, n);
+	printf("%s ", a);
+
+	return 0;
+}

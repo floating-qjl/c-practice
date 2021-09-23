@@ -1,0 +1,30 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <assert.h>
+#include <string.h>
+void test(char* a, int n)
+{
+	assert(a != NULL);
+	int len = strlen(a);
+	int b = 0;
+	int c = 0;
+	for (b = 0;b < n;b++)
+	{
+		char d = *a;
+		for (c = 0;c < len - 1;c++)
+		{
+			*(a + c) = *(a + c + 1);
+		}
+		*(a + len - 1) = d;
+	}
+}
+int main()
+{
+	char a[] = "abcdef";
+	int n = 0;
+	scanf("%d", &n);
+	test(a, n);
+	printf("%s ", a);
+
+	return 0;
+}

@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+//杨氏矩阵 - 每一行依次递增，每一列依次递增
+int findnum(int a[3][3], int k, int LL, int RR)
+{
+	int x = 0;
+	int y = RR - 1;
+	while (x < LL && y >= 0)
+	{
+		if (a[x][y] > k)
+			y--;//说明不在这一列
+		else if (a[x][y] < k)
+			x++;//说明不在这一行
+		else
+		{
+			printf("%d %d\n", x, y);
+			return 1;
+		}
+	}
+	return 0;
+}
+int main()
+{
+	int a[3][3] = { {1,2,3},{4,5,6},{7,8,9} };
+	int k = 7;
+	int ret = findnum(a, 7, 3, 3);
+	if (ret == 1)
+		printf("找到了\n");
+	else
+		printf("没有\n");
+	return 0;
+}

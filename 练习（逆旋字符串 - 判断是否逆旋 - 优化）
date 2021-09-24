@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+int is_move(char* a, char* b)
+{
+	int len1 = strlen(a);
+	int len2 = strlen(b);
+	//strcat（a，b） - 连接字符串，可以在字符串后面添加字符串，会自动找到\0，但不适合自己添加自己
+	if (len1 != len2)
+		return 0;
+	strncat(a, a, len1);//无需找到\0，会自动在后添加len1个字符
+	char* ret = strstr(a, b);
+	//判断b的字符串是否是a的子集字符串,strstr返回类型为字符指针或空指针
+	if (ret == NULL)
+		return 0;
+	else
+		return 1;
+}
+int main()
+{
+	char a[30] = "abcdefg";
+	char b[] = "defgabc";
+	int ret = is_move(a, b);
+	if (ret == 1)
+		printf("yes\n");
+	else
+		printf("no\n");
+	return 0;
+}

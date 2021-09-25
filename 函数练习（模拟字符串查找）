@@ -2,18 +2,18 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-char* my_strstr(char* a, char* b)
+char* my_strstr(const char* a,const char* b)
 {
 	assert((a && b) != NULL);
-	char* pa = a;
-	char* pb = b;
-	char* cur = a;
+	char* pa = (char*)a;
+	char* pb = (char*)b;
+	char* cur = (char*)a;
 	if (*b == '\0')
 		return a;
 	while (*cur)
 	{
 		pa = cur;
-		pb = b;
+		pb = (char*)b;
 		while ((*pa == *pb) && (*pa != NULL) && (*pb != NULL))
 		{
 			pa++;

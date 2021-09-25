@@ -1,0 +1,38 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+char* my_strstr(char* a, char* b)
+{
+	assert((a && b) != NULL);
+	char* pa = a;
+	char* pb = b;
+	char* cur = a;
+	if (*b == '\0')
+		return a;
+	while (*cur)
+	{
+		pa = cur;
+		pb = b;
+		while ((*pa == *pb) && (*pa != NULL) && (*pb != NULL))
+		{
+			pa++;
+			pb++;
+		}
+		if (*pb == '\0')
+			return cur;
+		cur++;
+	}
+	return NULL;
+}
+int main()
+{
+	char* a = "abbcdefg";
+	char* b = "bbc";
+	char* ret = my_strstr(a, b);
+	if (ret != NULL)
+		printf("%s\n", ret);
+	else
+		printf("未找到\n");
+	return 0;
+}

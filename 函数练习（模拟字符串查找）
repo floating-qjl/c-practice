@@ -5,8 +5,8 @@
 char* my_strstr(const char* a,const char* b)
 {
 	assert((a && b) != NULL);
-	char* pa = (char*)a;
-	char* pb = (char*)b;
+	char* pa = NULL;
+	char* pb = NULL;
 	char* cur = (char*)a;
 	if (*b == '\0')
 		return a;
@@ -14,13 +14,15 @@ char* my_strstr(const char* a,const char* b)
 	{
 		pa = cur;
 		pb = (char*)b;
-		while ((*pa == *pb) && (*pa != NULL) && (*pb != NULL))
+		while ((*pa == *pb) && (*pa && *pb ))
 		{
 			pa++;
 			pb++;
 		}
 		if (*pb == '\0')
 			return cur;
+		if (*pa == '\0')
+		        return NULL;
 		cur++;
 	}
 	return NULL;

@@ -1,0 +1,31 @@
+//在庆祝祖国母亲70华诞之际，老师给小乐乐出了一个问题。大家都知道China的英文缩写是CHN，
+//那么给你一个字符串s，你需要做的是统计s中子串“CHN”的个数。子串的定义：
+//存在任意下标a < b < c，那么“s[a]s[b]s[c]”就构成s的一个子串。如“ABC”的子串有“A”、“B”、“C”、“AB”、“AC”、“BC”、“ABC”。
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    char str[8005];
+    gets(str);
+    long long i,cnt_c=0,cnt_h=0,cnt_n=0;
+    for(i=0;str[i]!='\0';i++)
+    {
+        if(str[i]=='C') 
+            cnt_c++;
+        else if(str[i]=='H') 
+            cnt_h+=cnt_c;
+        else if(str[i]=='N') 
+            cnt_n+=cnt_h;
+    }
+    printf("%lld\n",cnt_n);
+    return 0;
+}

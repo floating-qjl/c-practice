@@ -1,0 +1,40 @@
+数学中有概率的概念。概率反映的是事件出现的可能性大小。设对某一随机现象进行了n次试验与观察，其中A事件出现了m次，即其出现的频率为m/n。
+
+比如：有一个字符串happy，那么该单词中字符a出现的概率 = 1 / 5 = 0.2，字符p出现的概率 = 2 / 5 = 0.4。
+
+现给出n行，每行有一个字符和一个单词，求该字符在单词中出现的概率。
+
+注意：求字符出现的概率时，不区分大小写，也就是如果求字符P在happy中出现的概率，结算结果 =  2 / 5 = 0.4。
+
+
+
+
+
+
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	getchar();
+	while (n--)
+	{
+		double count = 0;
+		double num = 0;
+		char a = 0;
+		char arr[501] = { 0 };
+		scanf(" %c %s", &a,arr);
+		char* pa = arr;
+		while (*pa != '\0')
+		{
+			if (*pa == a || *pa == a + 32 || *pa == a - 32)
+				count++;
+			pa++;
+			num++;
+		}
+		printf("%.5lf\n", count / num);
+		getchar();
+	}
+	return 0;
+}
